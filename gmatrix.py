@@ -5,7 +5,6 @@ def main():
     while(1):
         for i in range(0, 79):
             rand_char = chr(randint(0, 177))
-            terminal_buffer[i] = rand_char
             print(rand_char, end = "")
         sleep(.1)
 
