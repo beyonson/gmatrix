@@ -1,6 +1,10 @@
 import sys
+import os
 from random import randint, random
 from time import sleep
+
+
+illegal_chars = ['\'', '\"', '(', ')', '|', ';', ':']
 
 
 def main():
@@ -22,13 +26,17 @@ def main():
                 # decrement length to be drawn
                 matrix_info[0][i] = matrix_info[0][i] - 1
             else:
-                rand_char = chr(randint(33, 126))
+                rand_char = chr(randint(33, 90))
+                if rand_char in illegal_chars:
+                    rand_char = '0'
                 term_buf = term_buf + rand_char
                 # decrement length to be drawn
                 matrix_info[0][i] = matrix_info[0][i] - 1
 
         sleep(0.1)
-        print(term_buf)
+        cmd = "echo \"" + term_buf + "\""
+        os.system(cmd)
+
 
 if __name__=="__main__":
     main()
