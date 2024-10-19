@@ -2,7 +2,7 @@ from random import randint
 from time import sleep
 
 def main():
-    while(1):
+    #while(1):
         for i in range(0, 79):
             rand_char = chr(randint(0, 177))
             print(rand_char, end = "")
