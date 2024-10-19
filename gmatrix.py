@@ -1,13 +1,34 @@
 import sys
-from random import randint
+from random import randint, random
 from time import sleep
 
+
 def main():
-    #while(1):
+    # matrix info [length][spaces 0/1][char to be drawn]
+    matrix_info = [ [0]*80 for i in range(2)]
+    matrix_info[0][2] = 1
+
+    while(1):
+        term_buf = ""
         for i in range(0, 79):
-            rand_char = chr(randint(0, 177))
-            print(rand_char, end = "")
-        sleep(1)
+            # done being drawn, needs reassigned
+            if matrix_info[0][i] == 0:
+                spaces_or_nah = random() >= 0.15
+                rand_len = randint(10, 40)
+                matrix_info[0][i] = rand_len
+                matrix_info[1][i] = spaces_or_nah
+            elif matrix_info[1][i] == True:
+                term_buf = term_buf + ' '
+                # decrement length to be drawn
+                matrix_info[0][i] = matrix_info[0][i] - 1
+            else:
+                rand_char = chr(randint(33, 126))
+                term_buf = term_buf + rand_char
+                # decrement length to be drawn
+                matrix_info[0][i] = matrix_info[0][i] - 1
+
+        sleep(0.1)
+        print(term_buf)
 
 if __name__=="__main__":
     main()
