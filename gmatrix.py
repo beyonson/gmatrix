@@ -9,12 +9,11 @@ illegal_chars = ['\'', '\"', '(', ')', '|', ';', ':']
 
 def main():
     # matrix info [length][spaces 0/1][char to be drawn]
-    matrix_info = [ [0]*80 for i in range(2)]
-    matrix_info[0][2] = 1
+    matrix_info = [ [0]*78 for i in range(2)]
 
     while(1):
         term_buf = ""
-        for i in range(0, 79):
+        for i in range(0, 77):
             # done being drawn, needs reassigned
             if matrix_info[0][i] == 0:
                 spaces_or_nah = random() >= 0.15
