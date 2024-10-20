@@ -8,12 +8,12 @@ illegal_chars = ['\'', '\"', '(', ')', '|', ';', ':']
 
 
 def main():
-    # matrix info [length][spaces 0/1][char to be drawn]
-    matrix_info = [ [0]*72 for i in range(2)]
+    # matrix info [length] [spaces t/f]
+    matrix_info = [ [0]*80 for i in range(2)]
 
     while(1):
         term_buf = ""
-        for i in range(0, 71):
+        for i in range(0, 79):
             # done being drawn, needs reassigned
             if matrix_info[0][i] == 0:
                 spaces_or_nah = random() >= 0.15
@@ -32,7 +32,7 @@ def main():
                 # decrement length to be drawn
                 matrix_info[0][i] = matrix_info[0][i] - 1
 
-        sleep(0.1)
+        sleep(0.21)
         cmd = "echo \"" + term_buf + "\""
         os.system(cmd)
 
